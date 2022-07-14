@@ -1,0 +1,57 @@
+<div class="mb-5"></div>
+<!-- <div class="alert alert-danger" *ngIf="err">
+  <p>{{ err }}</p>
+</div> -->
+<app-alert [message]="err" *ngIf="err" (close)="onHandleError()">
+   
+</app-alert>
+<div *ngIf="isLoading" style="text-align: center;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input
+        type="email"
+        id="email"
+        class="form-control"
+        ngModel
+        name="email"
+        required
+        email
+      />
+      <label class="form-label" for="form2Example1">Email address</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input
+        type="password"
+        id="password"
+        class="form-control"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+      />
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        
+      </div>
+  
+    </div>
+  
+    <!-- Submit button -->
+    <button class="btn btn-primary btn-block mx-4" type="submit">{{ isLoginmode ? 'Login':'Sign up'}}</button>
+    <button type="button" class="btn btn-success btn-block mx-4" (click)="onSwitchMode()" type="button">Switch to {{ isLoginmode ? 'Sign up': 'Login'}}</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+     
+    </div>
+  </form>
